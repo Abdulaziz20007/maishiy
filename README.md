@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./header.gif" width="300" height="300"/>
+  <img src="./header.gif" width="200" height="200"/>
   
   # Maishiy xizmatlar bot
 
