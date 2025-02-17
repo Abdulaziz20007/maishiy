@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://i.imgur.com/8wqd1sE.gif" width="200" height="200"/>
+  <img src="./header.gif" width="300" height="300"/>
   
   # Maishiy xizmatlar bot
-  
+
   <p style="color: #4A4A4A">
     <b>Ustalar va Mijozlar uchun Professional Online Buyurtma Tizimi</b>
   </p>
