@@ -23,7 +23,7 @@ export class BotService {
   async start(ctx: Context) {
     await ctx.reply("Ro'yxatdan kim sifatida o'tmoqchisiz?", {
       reply_markup: {
-        keyboard: [[{ text: "Usta" }, { text: "Mijoz" }]],
+        keyboard: [[{ text: "👨‍🔧 Usta" }, { text: "👤 Mijoz" }]],
         one_time_keyboard: true,
         resize_keyboard: true,
       },
@@ -65,12 +65,12 @@ export class BotService {
         }
       );
     } else {
-      await ctx.reply("Menu tanlang🧾", {
+      await ctx.reply("Menu tanlang 📋", {
         parse_mode: "Markdown",
         reply_markup: {
           keyboard: [
-            ["🛠 Xizmatlar", "📌 Tanlangan Xizmatlar"],
-            ["📝 Ma'lumotlarni o'zgartirish"],
+            ["🔧 Xizmatlar", "📑 Buyurtmalar"],
+            ["✏️ Ma'lumotlarni o'zgartirish"],
             ["❌ Profilni o'chirish"],
           ],
           resize_keyboard: true,
@@ -123,24 +123,16 @@ export class BotService {
           ...Markup.keyboard(["/start"]).resize().oneTime(),
         });
       } else {
-        await ctx.reply("Xizmat turlaridan birini tanlang📌", {
+        await ctx.reply("Xizmat turini tanlang 📋", {
           reply_markup: {
             inline_keyboard: [
               [
-                { text: "SARTAROSHXONA", callback_data: "cl_barber" },
-
-                {
-                  text: "GO'ZALLIK SALONI",
-                  callback_data: "ser_beauty",
-                },
+                { text: "💇‍♂️ SARTAROSHXONA", callback_data: "cl_barber" },
+                { text: "💅 GO'ZALLIK SALONI", callback_data: "ser_beauty" },
               ],
               [
-                { text: "SOATSOZ", callback_data: "cl_watch" },
-
-                {
-                  text: "POYABZAL USTAXONASI",
-                  callback_data: "cl_shoe",
-                },
+                { text: "⌚️ SOATSOZ", callback_data: "cl_watch" },
+                { text: "👞 POYABZAL TA'MIRI", callback_data: "cl_shoe" },
               ],
             ],
           },
@@ -167,10 +159,10 @@ export class BotService {
         const contextMessage = ctx.callbackQuery!["message"];
         let type_ser = contextAction.split("_")[1];
         user.search_type = type_ser;
-        await ctx.reply("Nima bo'yicha izlaymiz🔍", {
+        await ctx.reply("Qanday usulda qidiramiz? 🔍", {
           parse_mode: "Markdown",
           reply_markup: {
-            keyboard: [["🧾Ism", "🌟Reyting"], ["📍Lokatsiya"]],
+            keyboard: [["👤 Ism", "⭐️ Reyting"], ["📍 Lokatsiya"]],
             resize_keyboard: true,
           },
         });
@@ -389,24 +381,22 @@ export class BotService {
           const stars = "⭐".repeat(Math.round(Number(stuff?.rating)));
           const masterInfo = `👨‍🔧 Usta: Ism: ${stuff.name}\n📞 Tel: ${stuff.phone_number}\n🔧 Xizmat turi: ${stuff.service_type}\n⭐ Reyting: ${(stuff.rating, stars)}/5\n,🏛️ *Manzil:* ${stuff.address}\n`;
 
-          await ctx.reply(
-            `${masterInfo}\n\nXizmat turlaridan birini tanlang📌`,
-            {
-              reply_markup: {
-                inline_keyboard: [
-                  [{ text: "Lokatsiya📍", callback_data: `loc_${stuff_id}` }],
-                  [{ text: "Baholash⭐", callback_data: `rate_${stuff_id}` }],
-                  [
-                    {
-                      text: "Vaqt olish📌",
-                      callback_data: `lastbook_${stuff_id}`,
-                    },
-                  ],
-                  [{ text: "Ortga🔙", callback_data: "back" }],
+          await ctx.reply(masterInfo, {
+            parse_mode: "Markdown",
+            reply_markup: {
+              inline_keyboard: [
+                [{ text: "📍 Lokatsiya", callback_data: `loc_${stuff_id}` }],
+                [{ text: "⭐ Baholash", callback_data: `rate_${stuff_id}` }],
+                [
+                  {
+                    text: "📅 Band qilish",
+                    callback_data: `lastbook_${stuff_id}`,
+                  },
                 ],
-              },
-            }
-          );
+                [{ text: "⬅️ Ortga", callback_data: "back" }],
+              ],
+            },
+          });
         }
       }
     } catch (error) {
@@ -434,7 +424,7 @@ export class BotService {
     try {
       const contextAction = ctx.callbackQuery!["data"];
       const stuff_id = contextAction.split("_")[1];
-      await ctx.editMessageText("Ushbu ustani baholang: ⭐", {
+      await ctx.editMessageText("Ushbu ustani baholang:", {
         reply_markup: {
           inline_keyboard: [
             [{ text: "⭐", callback_data: `rating_1_${stuff_id}` }],
@@ -442,6 +432,7 @@ export class BotService {
             [{ text: "⭐⭐⭐", callback_data: `rating_3_${stuff_id}` }],
             [{ text: "⭐⭐⭐⭐", callback_data: `rating_4_${stuff_id}` }],
             [{ text: "⭐⭐⭐⭐⭐", callback_data: `rating_5_${stuff_id}` }],
+            [{ text: "⬅️ Ortga", callback_data: "back" }],
           ],
         },
       });
@@ -621,8 +612,12 @@ export class BotService {
           inline_keyboard: [
             [
               {
-                text: "📌 Band qilish",
-                callback_data: `stepstatus_busy_${time}_${schedule_id}`,
+                text: "✅ Bo'sh",
+                callback_data: `status_free_${time}_${schedule_id}`,
+              },
+              {
+                text: "❌ Band",
+                callback_data: `status_busy_${time}_${schedule_id}`,
               },
             ],
             [
@@ -718,7 +713,7 @@ export class BotService {
       );
     } catch (error) {
       console.error("Baholashda xatolik:", error);
-      await ctx.reply("Baholashda xatolik yuz berdi. Qayta urinib ko‘ring!");
+      await ctx.reply("Baholashda xatolik yuz berdi. Qayta urinib ko'ring!");
     }
   }
 

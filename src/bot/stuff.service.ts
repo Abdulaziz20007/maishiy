@@ -57,24 +57,24 @@ export class StuffService {
             reply_markup: {
               inline_keyboard: [
                 [
-                  { text: "SARTAROSHXONA", callback_data: "ser_barber" },
-                  { text: "GO'ZALLIK SALONI", callback_data: "ser_beauty" },
+                  { text: "💇‍♂️ SARTAROSHXONA", callback_data: "ser_barber" },
+                  { text: "💅 GO'ZALLIK SALONI", callback_data: "ser_beauty" },
                 ],
                 [
-                  { text: "SOATSOZ", callback_data: "ser_watch" },
-                  { text: "POYABZAL USTAXONASI", callback_data: "ser_shoe" },
+                  { text: "⌚️ SOATSOZ", callback_data: "ser_watch" },
+                  { text: "👞 POYABZAL TA'MIRI", callback_data: "ser_shoe" },
                 ],
               ],
             },
           }
         );
       } else {
-        await ctx.reply("Menu tanlang🧾🧾", {
+        await ctx.reply("Menu tanlang 📋", {
           parse_mode: "Markdown",
           reply_markup: {
             keyboard: [
-              ["👥 Mijozlar", "🕒 Vaqt", "Mening Reytingim ⭐️"],
-              ["📝 Ma'lumotlarni o'zgartirish"],
+              ["👥 Mijozlar", "⏰ Ish vaqti", "⭐️ Reyting"],
+              ["✏️ Ma'lumotlarni o'zgartirish"],
               ["❌ Profilni o'chirish"],
             ],
             resize_keyboard: true,
@@ -120,12 +120,12 @@ export class StuffService {
             reply_markup: {
               inline_keyboard: [
                 [
-                  { text: "SARTAROSHXONA", callback_data: "ser_barber" },
-                  { text: "GO'ZALLIK SALONI", callback_data: "ser_beauty" },
+                  { text: "💇‍♂️ SARTAROSHXONA", callback_data: "ser_barber" },
+                  { text: "💅 GO'ZALLIK SALONI", callback_data: "ser_beauty" },
                 ],
                 [
-                  { text: "SOATSOZ", callback_data: "ser_watch" },
-                  { text: "POYABZAL USTAXONASI", callback_data: "ser_shoe" },
+                  { text: "⌚️ SOATSOZ", callback_data: "ser_watch" },
+                  { text: "👞 POYABZAL TA'MIRI", callback_data: "ser_shoe" },
                 ],
               ],
             },
@@ -236,12 +236,12 @@ export class StuffService {
               user.username = ctx.message.text;
               user.last_state = "finish";
               await user.save();
-              await ctx.reply("Menu tanlang 🧾", {
+              await ctx.reply("Menu tanlang 📋", {
                 parse_mode: "Markdown",
                 reply_markup: {
                   keyboard: [
-                    ["🛠 Xizmatlar", "📌 Tanlangan Xizmatlar"],
-                    ["📝 Ma'lumotlarni o'zgartirish"],
+                    ["🔧 Xizmatlar", "📑 Buyurtmalar"],
+                    ["✏️ Ma'lumotlarni o'zgartirish"],
                     ["❌ Profilni o'chirish"],
                   ],
                   resize_keyboard: true,
@@ -259,7 +259,7 @@ export class StuffService {
           console.log(stuffs);
 
           if (stuffs.length !== 0) {
-            let response = `🔎 **${user.search_type} bo‘yicha topilgan ustalar:**\n\n`;
+            let response = `🔎 **${user.search_type} bo'yicha topilgan ustalar:**\n\n`;
             stuffs.forEach(async (stuff) => {
               const stars = "⭐".repeat(Math.round(Number(stuff?.rating)));
               let response = `👤 *Ism:* ${stuff.name}\n`;
@@ -523,7 +523,7 @@ export class StuffService {
           `*🕒 Ish vaqti:* ${stuff!.start_work_time ?? "Noma'lum"} - ${stuff!.end_work_time ?? "Noma'lum"}\n` +
           `*⏳ Ish davomiyligi:* ${stuff!.spend_time ?? "Noma'lum"}\n` +
           `*🔧 Xizmat turi:* ${stuff!.service_type ?? "Noma'lum"}\n` +
-          `*🔄 So‘nggi holat:* ${stuff!.last_state ?? "Noma'lum"}`;
+          `*🔄 So'nggi holat:* ${stuff!.last_state ?? "Noma'lum"}`;
 
         await this.bot.telegram.sendMessage(
           String(findAdmin?.admin_id),
@@ -570,12 +570,12 @@ export class StuffService {
           reply_markup: {
             inline_keyboard: [
               [
-                { text: "SARTAROSHXONA", callback_data: "ser_barber" },
-                { text: "GO'ZALLIK SALONI", callback_data: "ser_beauty" },
+                { text: "💇‍♂️ SARTAROSHXONA", callback_data: "ser_barber" },
+                { text: "💅 GO'ZALLIK SALONI", callback_data: "ser_beauty" },
               ],
               [
-                { text: "SOATSOZ", callback_data: "ser_watch" },
-                { text: "POYABZAL USTAXONASI", callback_data: "ser_shoe" },
+                { text: "⌚️ SOATSOZ", callback_data: "ser_watch" },
+                { text: "👞 POYABZAL TA'MIRI", callback_data: "ser_shoe" },
               ],
             ],
           },

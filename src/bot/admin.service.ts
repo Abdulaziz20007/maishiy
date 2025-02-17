@@ -49,9 +49,11 @@ export class AdminService {
         });
       }
 
-      await ctx.reply("Assalom Alaykum Admin tog'a tizimga xush kelibsiz✅👨‍💼", {
+      await ctx.reply("Assalomu alaykum, Admin! 👨‍💼", {
         reply_markup: {
-          keyboard: [[{ text: "Mijozlar ro'yxati" }, { text: "Arizalar" }]],
+          keyboard: [
+            [{ text: "👥 Mijozlar ro'yxati" }, { text: "📝 Arizalar" }],
+          ],
           one_time_keyboard: true,
           resize_keyboard: true,
         },
@@ -87,17 +89,28 @@ export class AdminService {
         await this.scheduleModel.create({ stuff_id });
         await this.bot.telegram.sendMessage(
           String(findStuff?.stuff_id),
-          "Siz muvaffaqiyatli ro'yxatdan o'tdingiz✅",
+          "Siz muvaffaqiyatli ro'yxatdan o'tdingiz ✅",
           {
             parse_mode: "Markdown",
             reply_markup: {
-              keyboard: [
-                ["👥 Mijozlar", "🕒 Vaqt", "⭐ Reyting"],
-                ["📝 Ma'lumotlarni o'zgartirish"],
-                ["❌ Profilni o'chirish"],
+              inline_keyboard: [
+                [
+                  {
+                    text: "✅ Tasdiqlash",
+                    callback_data: `confirmStuff_${stuff_id}`,
+                  },
+                  {
+                    text: "❌ Bekor qilish",
+                    callback_data: `cancelStuff_${stuff_id}`,
+                  },
+                ],
+                [
+                  {
+                    text: "📱 Admin bilan bog'lanish",
+                    callback_data: "contact_admin",
+                  },
+                ],
               ],
-              resize_keyboard: true,
-              one_time_keyboard: false,
             },
           }
         );

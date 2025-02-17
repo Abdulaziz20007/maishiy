@@ -44,7 +44,7 @@ export class BotUpdate {
     await this.adminService.admin(ctx);
   }
 
-  @Hears(["Mijoz", "Usta"])
+  @Hears(["👤 Mijoz", "👨‍🔧 Usta"])
   async onSelectRole(@Ctx() ctx: Context) {
     const who = ctx.text;
     const guest_id = ctx.from?.id;
@@ -55,25 +55,25 @@ export class BotUpdate {
     } else if (findStuff) {
       await this.stuffService.startStuff(ctx);
     } else {
-      if (who == "Mijoz") {
+      if (who == "👤 Mijoz") {
         await this.botService.startUser(ctx);
-      } else if (who == "Usta") {
+      } else if (who == "👨‍🔧 Usta") {
         await this.stuffService.startStuff(ctx);
       }
     }
   }
 
-  @Hears("🧾Ism")
+  @Hears("👤 Ism")
   async onSearchName(@Ctx() ctx: Context) {
     this.botService.onSearchName(ctx);
   }
 
-  @Hears("🌟Reyting")
+  @Hears("⭐️ Reyting")
   async onRatingMenu(@Ctx() ctx: Context) {
     this.botService.onRating(ctx);
   }
 
-  @Hears("📍Lokatsiya")
+  @Hears("📍 Lokatsiya")
   async onSearchLocation(@Ctx() ctx: Context) {
     this.botService.onSearchLocation(ctx);
   }
@@ -88,7 +88,7 @@ export class BotUpdate {
     this.stuffService.stuffRating(ctx);
   }
 
-  @Hears("📌 Tanlangan Xizmatlar")
+  @Hears("📑 Buyurtmalar")
   async onSelectedService(@Ctx() ctx: Context) {
     this.botService.selectedServices(ctx);
   }
@@ -226,7 +226,7 @@ export class BotUpdate {
     await this.stuffService.onCheck(ctx);
   }
 
-  @Hears("🕒 Vaqt")
+  @Hears("⏰ Ish vaqti")
   async onCheckTime(@Ctx() ctx: Context) {
     await this.stuffService.onCheckTime(ctx);
   }
@@ -236,7 +236,7 @@ export class BotUpdate {
     await this.stuffService.onCheckClients(ctx);
   }
 
-  @Hears("🛠 Xizmatlar")
+  @Hears("🔧 Xizmatlar")
   async onServices(@Ctx() ctx: Context) {
     await this.botService.onService(ctx);
   }
