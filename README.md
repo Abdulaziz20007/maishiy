@@ -102,3 +102,13 @@ PORT=3003
   <p>Bog'lanish: <a href="https://t.me/maishiyxizmatlarbot" style="color: #3498DB; text-decoration: none; font-weight: bold;">@maishiyxizmatlarbot</a></p>
   <p>Litsenziya: MIT</p>
 </div>
+
+<div align="center">
+  <h3>☕ Buy Me a Coffee</h3>
+  <p>If this project made your day a bit brighter, consider buying me a virtual coffee:</p>
+  <div style="background-color: #F8F9FA; padding: 15px; border-radius: 8px; max-width: 500px; margin: 15px auto;">
+    <p style="margin: 5px 0; color: #4A4A4A;">TON Network:</p>
+    <code style="background-color: #EAECEF; padding: 8px; border-radius: 4px; display: block; word-break: break-all; font-size: 0.9em;">UQCJEPo9jlYnmHP0JjlVbvExgM_KW6Wtru9Xd7WI-9T7uD3m</code>
+  </div>
+  <p style="color: #6c757d; font-size: 0.9em;">Thanks! Your kindness fuels more coding adventures ✨</p>
+</div>
