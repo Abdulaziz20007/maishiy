@@ -28,7 +28,7 @@ export class AdminService {
   ) {}
 
   async admin(ctx: Context) {
-    const admin_id = 1725480158;
+    const admin_id = Number(process.env.ADMIN);
     const send_id = ctx.from?.id;
     const findAdmin = await this.adminModel.findByPk(admin_id);
     if (admin_id !== send_id) {
